@@ -45,7 +45,7 @@ export const categories: CalcCategory[] = [
       { name: 'SIP Calculator', desc: 'Mutual fund SIP growth estimator', href: '/sip-calculator', status: 'live', emoji: '📊' },
       { name: 'Lumpsum Investment Calculator', desc: 'One-time investment growth calculator', href: '/lumpsum-calculator', status: 'live', emoji: '💰' },
       { name: 'PPF Calculator', desc: 'Public Provident Fund maturity calculator', href: '/ppf-calculator', status: 'live', emoji: '🏦' },
-      { name: 'Recurring Deposit (RD) Calculator', desc: 'Monthly RD maturity and interest', href: '/rd-calculator', status: 'soon', emoji: '📅' },
+      { name: 'Recurring Deposit (RD) Calculator', desc: 'Monthly RD maturity and interest', href: '/rd-calculator', status: 'live', emoji: '📅' },
       { name: 'Mutual Fund Calculator', desc: 'Estimate mutual fund returns', href: '/mutual-fund', status: 'soon', emoji: '📉' },
       { name: 'SWP Calculator', desc: 'Systematic Withdrawal Plan calculator', href: '/swp-calculator', status: 'soon', emoji: '💸' },
       { name: 'STP Calculator', desc: 'Systematic Transfer Plan planner', href: '/stp-calculator', status: 'soon', emoji: '🔁' },
@@ -57,7 +57,7 @@ export const categories: CalcCategory[] = [
     color: 'amber',
     items: [
       { name: 'EPF Calculator', desc: 'Employee Provident Fund corpus calculator', href: '/epf-calculator', status: 'soon', emoji: '👷' },
-      { name: 'NPS Calculator', desc: 'National Pension System returns', href: '/nps-calculator', status: 'soon', emoji: '🏛️' },
+      { name: 'NPS Calculator', desc: 'National Pension System returns', href: '/nps-calculator', status: 'live', emoji: '🏛️' },
       { name: 'Sukanya Samriddhi Yojana (SSY)', desc: 'SSY maturity amount for girl child', href: '/ssy-calculator', status: 'soon', emoji: '👧' },
       { name: 'NSC Calculator', desc: 'National Savings Certificate returns', href: '/nsc-calculator', status: 'soon', emoji: '📜' },
       { name: 'Kisan Vikas Patra (KVP)', desc: 'KVP doubling period and maturity', href: '/kvp-calculator', status: 'soon', emoji: '🌾' },
@@ -71,8 +71,8 @@ export const categories: CalcCategory[] = [
     color: 'rose',
     items: [
       { name: 'GST Calculator', desc: 'Calculate GST, CGST, SGST on any amount', href: '/gst-calculator', status: 'live', emoji: '📋' },
-      { name: 'Income Tax Calculator', desc: 'Old vs new tax regime comparison', href: '/income-tax', status: 'soon', emoji: '🧮' },
-      { name: 'HRA Calculator', desc: 'House Rent Allowance exemption calculator', href: '/hra-calculator', status: 'soon', emoji: '🏠' },
+      { name: 'Income Tax Calculator', desc: 'Old vs new tax regime comparison FY 2025-26', href: '/income-tax', status: 'live', emoji: '🧮' },
+      { name: 'HRA Calculator', desc: 'House Rent Allowance exemption calculator', href: '/hra-calculator', status: 'live', emoji: '🏠' },
       { name: 'Capital Gains Tax Calculator', desc: 'STCG and LTCG tax estimator', href: '/capital-gains', status: 'soon', emoji: '📈' },
     ],
   },
@@ -83,6 +83,7 @@ export const categories: CalcCategory[] = [
     items: [
       { name: 'Compound Interest Calculator', desc: 'Growth with compounding frequency options', href: '/compound-interest', status: 'live', emoji: '📐' },
       { name: 'Simple Interest Calculator', desc: 'Quick simple interest and total amount', href: '/simple-interest', status: 'live', emoji: '📏' },
+      { name: 'CAGR Calculator', desc: 'Compound Annual Growth Rate calculator', href: '/cagr-calculator', status: 'live', emoji: '📈' },
       { name: 'Interest Rate Calculator', desc: 'Find the implicit interest rate on a loan', href: '/interest-rate', status: 'soon', emoji: '🔢' },
       { name: 'Loan Tenure Calculator', desc: 'Find tenure for a given EMI and rate', href: '/loan-tenure', status: 'soon', emoji: '📆' },
       { name: 'Amortization Schedule', desc: 'Detailed month-by-month schedule', href: '/home-loan', status: 'live', emoji: '📋' },
@@ -94,7 +95,7 @@ export const categories: CalcCategory[] = [
     color: 'teal',
     items: [
       { name: 'Gratuity Calculator', desc: 'Calculate gratuity as per Payment of Gratuity Act', href: '/gratuity-calculator', status: 'live', emoji: '🤝' },
-      { name: 'Retirement Calculator', desc: 'How much corpus do you need to retire?', href: '/retirement', status: 'soon', emoji: '🌅' },
+      { name: 'Retirement Calculator', desc: 'How much corpus do you need to retire?', href: '/retirement', status: 'live', emoji: '🌅' },
       { name: 'Pension Calculator', desc: 'Monthly pension from your corpus', href: '/pension', status: 'soon', emoji: '📆' },
     ],
   },
@@ -103,6 +104,7 @@ export const categories: CalcCategory[] = [
     emoji: '🏗️',
     color: 'orange',
     items: [
+      { name: 'Rent vs Buy Calculator', desc: 'Should you rent or buy? Find break-even year', href: '/rent-vs-buy', status: 'live', emoji: '🏗️' },
       { name: 'Stamp Duty Calculator', desc: 'Estimate stamp duty by state and value', href: '/stamp-duty', status: 'soon', emoji: '📑' },
       { name: 'Property Registration Charges', desc: 'Registration fee and total property cost', href: '/property-registration', status: 'soon', emoji: '🖋️' },
     ],
@@ -136,7 +138,7 @@ export const categories: CalcCategory[] = [
       { name: 'Savings Goal Calculator', desc: 'How much to save monthly for your goal', href: '/savings-goal', status: 'soon', emoji: '🎯' },
       { name: 'Emergency Fund Calculator', desc: 'How large should your emergency fund be?', href: '/emergency-fund', status: 'soon', emoji: '🛡️' },
       { name: 'Inflation Calculator', desc: 'Future value of money after inflation', href: '/inflation', status: 'soon', emoji: '📉' },
-      { name: 'Child Education Planner', desc: 'Save for your child\'s education corpus', href: '/child-education', status: 'soon', emoji: '🎓' },
+      { name: 'Child Education Planner', desc: 'Save for your child\'s education corpus', href: '/child-education', status: 'live', emoji: '🎓' },
       { name: 'Marriage Planning Calculator', desc: 'Plan your wedding expenses and savings', href: '/marriage-planning', status: 'soon', emoji: '💍' },
       { name: 'Net Worth Calculator', desc: 'Assets minus liabilities = net worth', href: '/net-worth', status: 'soon', emoji: '💎' },
       { name: 'Wealth Creation Calculator', desc: 'Model your wealth over time', href: '/wealth-creation', status: 'soon', emoji: '🚀' },

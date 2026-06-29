@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Calculator, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calculator, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import { calculateEMI } from '@/lib/calculations';
@@ -169,8 +169,24 @@ export default function SimpleLoanCalculator({ config }: { config: SimpleLoanCon
 
                 {/* Amortization table */}
                 <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 overflow-hidden">
-                  <div className="px-5 py-4 border-b border-gray-100 dark:border-slate-700">
+                  <div className="px-5 py-4 border-b border-gray-100 dark:border-slate-700 flex items-center justify-between">
                     <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">Amortization Schedule</h3>
+                    <button
+                      onClick={() => {
+                        const rows = result.schedule;
+                        const csv = ['Month,EMI,Principal,Interest,Balance',
+                          ...rows.map(r => `${r.month},${r.emi.toFixed(2)},${r.principal.toFixed(2)},${r.interest.toFixed(2)},${r.balance.toFixed(2)}`)
+                        ].join('\n');
+                        const blob = new Blob([csv], { type: 'text/csv' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url; a.download = 'amortization-schedule.csv'; a.click();
+                        URL.revokeObjectURL(url);
+                      }}
+                      className="flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-200 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5" /> Download CSV
+                    </button>
                   </div>
                   <div className="overflow-x-auto">
                     <table className="w-full text-xs">

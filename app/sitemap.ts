@@ -27,6 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/articles/5-ways-to-reduce-home-loan-interest', priority: 0.7, freq: 'yearly' },
     { url: '/articles/sip-vs-fd-which-is-better', priority: 0.7, freq: 'yearly' },
     { url: '/articles/understanding-compound-interest-the-eighth-wonder', priority: 0.7, freq: 'yearly' },
+    { url: '/income-tax', priority: 0.9, freq: 'monthly' },
+    { url: '/hra-calculator', priority: 0.85, freq: 'monthly' },
+    { url: '/nps-calculator', priority: 0.85, freq: 'monthly' },
+    { url: '/rd-calculator', priority: 0.85, freq: 'monthly' },
+    { url: '/cagr-calculator', priority: 0.8, freq: 'monthly' },
+    { url: '/rent-vs-buy', priority: 0.8, freq: 'monthly' },
+    { url: '/child-education', priority: 0.8, freq: 'monthly' },
+    { url: '/retirement', priority: 0.85, freq: 'monthly' },
     { url: '/tips', priority: 0.65, freq: 'yearly' },
   ] as const;
 

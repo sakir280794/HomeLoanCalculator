@@ -9,18 +9,6 @@ export const metadata: Metadata = {
   description: 'All-in-one financial calculator platform. Home loan, personal loan, FD, SIP, PPF, GST, compound interest and 60+ calculators — free, accurate, and India-focused.',
 };
 
-const colorMap: Record<string, { bg: string; text: string; badge: string; border: string }> = {
-  indigo: { bg: 'bg-indigo-50 dark:bg-indigo-900/20', text: 'text-indigo-700 dark:text-indigo-300', badge: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400', border: 'border-indigo-200 dark:border-indigo-800' },
-  emerald: { bg: 'bg-emerald-50 dark:bg-emerald-900/20', text: 'text-emerald-700 dark:text-emerald-300', badge: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400', border: 'border-emerald-200 dark:border-emerald-800' },
-  amber: { bg: 'bg-amber-50 dark:bg-amber-900/20', text: 'text-amber-700 dark:text-amber-300', badge: 'bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400', border: 'border-amber-200 dark:border-amber-800' },
-  rose: { bg: 'bg-rose-50 dark:bg-rose-900/20', text: 'text-rose-700 dark:text-rose-300', badge: 'bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400', border: 'border-rose-200 dark:border-rose-800' },
-  purple: { bg: 'bg-purple-50 dark:bg-purple-900/20', text: 'text-purple-700 dark:text-purple-300', badge: 'bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400', border: 'border-purple-200 dark:border-purple-800' },
-  teal: { bg: 'bg-teal-50 dark:bg-teal-900/20', text: 'text-teal-700 dark:text-teal-300', badge: 'bg-teal-100 dark:bg-teal-900/40 text-teal-600 dark:text-teal-400', border: 'border-teal-200 dark:border-teal-800' },
-  orange: { bg: 'bg-orange-50 dark:bg-orange-900/20', text: 'text-orange-700 dark:text-orange-300', badge: 'bg-orange-100 dark:bg-orange-900/40 text-orange-600 dark:text-orange-400', border: 'border-orange-200 dark:border-orange-800' },
-  cyan: { bg: 'bg-cyan-50 dark:bg-cyan-900/20', text: 'text-cyan-700 dark:text-cyan-300', badge: 'bg-cyan-100 dark:bg-cyan-900/40 text-cyan-600 dark:text-cyan-400', border: 'border-cyan-200 dark:border-cyan-800' },
-  slate: { bg: 'bg-slate-50 dark:bg-slate-800/50', text: 'text-slate-700 dark:text-slate-300', badge: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400', border: 'border-slate-200 dark:border-slate-700' },
-  violet: { bg: 'bg-violet-50 dark:bg-violet-900/20', text: 'text-violet-700 dark:text-violet-300', badge: 'bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-400', border: 'border-violet-200 dark:border-violet-800' },
-};
 
 export default function HubPage() {
   const liveCount = categories.flatMap(c => c.items).filter(i => i.status === 'live').length;
@@ -39,9 +27,23 @@ export default function HubPage() {
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
             FinCalc India
           </h1>
-          <p className="text-indigo-200 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-indigo-200 text-lg mb-6 max-w-2xl mx-auto">
             {liveCount} live calculators · {totalCount}+ coming — loans, investments, tax, retirement &amp; more
           </p>
+          {/* Trust signals */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {[
+              { icon: '✅', label: `${liveCount} Free Calculators` },
+              { icon: '⚡', label: 'Instant Results' },
+              { icon: '🔒', label: 'No Signup' },
+              { icon: '📱', label: 'Mobile Friendly' },
+              { icon: '🇮🇳', label: 'India-Focused' },
+            ].map(t => (
+              <span key={t.label} className="inline-flex items-center gap-1.5 bg-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                {t.icon} {t.label}
+              </span>
+            ))}
+          </div>
           {/* Featured quick links */}
           <div className="flex flex-wrap justify-center gap-2">
             {[
