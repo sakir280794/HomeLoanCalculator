@@ -26,7 +26,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Car Loan EMI Calculator',
-  url: 'https://home-loan-calculator-ivory.vercel.app/car-loan',
+  url: 'https://fincalc-india.vercel.app/car-loan',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

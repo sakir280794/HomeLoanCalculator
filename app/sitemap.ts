@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const base = 'https://home-loan-calculator-ivory.vercel.app';
+const base = 'https://fincalc-india.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

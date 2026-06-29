@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://home-loan-calculator-ivory.vercel.app/sitemap.xml',
+    sitemap: 'https://fincalc-india.vercel.app/sitemap.xml',
   };
 }

@@ -26,7 +26,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'SIP Calculator',
-  url: 'https://home-loan-calculator-ivory.vercel.app/sip-calculator',
+  url: 'https://fincalc-india.vercel.app/sip-calculator',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

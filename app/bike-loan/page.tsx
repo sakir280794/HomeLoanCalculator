@@ -26,7 +26,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Bike Loan EMI Calculator',
-  url: 'https://home-loan-calculator-ivory.vercel.app/bike-loan',
+  url: 'https://fincalc-india.vercel.app/bike-loan',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

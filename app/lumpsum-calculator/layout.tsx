@@ -24,7 +24,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Lumpsum Investment Calculator',
-  url: 'https://home-loan-calculator-ivory.vercel.app/lumpsum-calculator',
+  url: 'https://fincalc-india.vercel.app/lumpsum-calculator',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

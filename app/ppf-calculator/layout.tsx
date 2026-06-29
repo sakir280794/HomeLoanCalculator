@@ -25,7 +25,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'PPF Calculator',
-  url: 'https://home-loan-calculator-ivory.vercel.app/ppf-calculator',
+  url: 'https://fincalc-india.vercel.app/ppf-calculator',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

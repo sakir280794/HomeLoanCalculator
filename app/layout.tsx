@@ -7,7 +7,7 @@ import JsonLd from '@/components/JsonLd';
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
 
-export const siteUrl = 'https://home-loan-calculator-ivory.vercel.app';
+export const siteUrl = 'https://fincalc-india.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
