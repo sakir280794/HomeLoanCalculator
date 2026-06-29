@@ -215,6 +215,139 @@ export const articles: Article[] = [
   },
 ];
 
+  {
+    slug: 'sip-vs-fd-which-is-better',
+    title: 'SIP vs FD: Which is Better for Growing Your Money in India?',
+    description:
+      'A data-driven comparison of Systematic Investment Plans and Fixed Deposits — returns, risk, liquidity, and tax treatment explained for Indian investors.',
+    date: '2026-06-29',
+    readTime: '6 min read',
+    category: 'Investment',
+    categoryColor: 'emerald',
+    intro:
+      'Two of the most popular investment options for Indian savers — SIP in mutual funds and Fixed Deposits in banks — are often seen as opposites. One is market-linked and volatile; the other is safe and predictable. But which one actually grows your money more over time? And which one is right for you? Let\'s break it down with real numbers.',
+    sections: [
+      {
+        heading: 'The Numbers: ₹5,000/month for 10 Years',
+        content: [
+          'Let\'s compare investing ₹5,000 per month for 10 years in both options.',
+          'FD at 7% p.a. (compounded quarterly): Total invested ₹6 lakh → Maturity ≈ ₹8.7 lakh → Gains ≈ ₹2.7 lakh',
+          'SIP at 12% p.a. (average equity mutual fund): Total invested ₹6 lakh → Corpus ≈ ₹11.6 lakh → Gains ≈ ₹5.6 lakh',
+          'The SIP generates more than double the gains — but that 12% is an assumed average, not a guarantee. Markets have good years and bad years.',
+        ],
+      },
+      {
+        heading: 'Fixed Deposit: Safety and Predictability',
+        content: [
+          'FD is a fixed-return instrument. You know exactly what you\'ll get at maturity. DICGC insurance covers deposits up to ₹5 lakh per bank, making them very safe.',
+          'Current FD rates (2026): Most major banks offer 6.5–7.5% for 1-5 year FDs. Senior citizens get an additional 0.25–0.50%.',
+          'Tax treatment: FD interest is taxed as per your income slab. If you\'re in the 30% bracket, your effective return on a 7% FD is just 4.9%.',
+          'Liquidity: Premature withdrawal is allowed but attracts a 0.5–1% penalty on the interest rate.',
+        ],
+      },
+      {
+        heading: 'SIP: Market-Linked Growth with Rupee Cost Averaging',
+        content: [
+          'SIP invests a fixed amount every month into a mutual fund. When markets are down, your ₹5,000 buys more units. When markets are up, it buys fewer. This "rupee cost averaging" reduces the impact of volatility over time.',
+          'Historical returns: Nifty 50 has delivered approximately 12-13% CAGR over the past 20 years. But individual years have ranged from -52% (2008) to +76% (2009).',
+          'Tax treatment: Long-term capital gains (held 1+ year) taxed at 12.5% above ₹1.25 lakh. Short-term at 20%. More tax-efficient than FD for investors in higher slabs.',
+          'Liquidity: Most equity mutual funds allow redemption within 2-3 business days. No penalty for early withdrawal (except ELSS, which has 3-year lock-in).',
+        ],
+      },
+      {
+        heading: 'When to Choose FD',
+        content: [
+          'You have a specific goal in 1-3 years (e.g. house down payment, education fee) — guaranteed corpus matters more than higher returns.',
+          'You are retired or close to retirement — capital preservation is the priority.',
+          'You cannot emotionally handle watching your investment value drop 20-30% during market corrections.',
+          'You need guaranteed monthly/quarterly interest income (FD interest payout option).',
+        ],
+      },
+      {
+        heading: 'When to Choose SIP',
+        content: [
+          'Your investment horizon is 7+ years — historically, equity returns beat FD over long periods in India.',
+          'You are building wealth for retirement, children\'s education, or long-term goals.',
+          'You can stay invested through market downturns without panicking and redeeming.',
+          'You want tax-efficient growth — long-term equity gains taxed at 12.5% vs your slab rate for FD interest.',
+        ],
+      },
+      {
+        heading: 'The Smart Approach: Both',
+        content: [
+          'Most financial advisors recommend a combination. Use FD for your emergency fund and short-term goals (1-3 years). Use SIP for long-term wealth creation (7+ years).',
+          'A common allocation: keep 6 months of expenses in FD as an emergency fund. Put all long-term savings (beyond 5 years) in SIP via diversified equity mutual funds.',
+          'Use the FinCalc India FD Calculator and SIP Calculator to model your specific amounts and see the difference in maturity values side by side.',
+        ],
+      },
+    ],
+    conclusion:
+      'SIP wins on long-term returns; FD wins on safety and predictability. The right choice depends entirely on your time horizon, risk tolerance, and tax bracket. For most working Indians building wealth over 10+ years, a SIP in a diversified equity fund will outperform FD significantly after tax. Use our calculators to run the numbers with your own figures.',
+  },
+  {
+    slug: 'understanding-compound-interest-the-eighth-wonder',
+    title: 'Compound Interest: Why Starting Early Changes Everything',
+    description:
+      'Albert Einstein called compound interest the eighth wonder of the world. Here\'s why, with real Indian investment examples and numbers that will make you start investing today.',
+    date: '2026-06-29',
+    readTime: '5 min read',
+    category: 'Basics',
+    categoryColor: 'purple',
+    intro:
+      '"Compound interest is the eighth wonder of the world. He who understands it, earns it; he who doesn\'t, pays it." Whether or not Einstein actually said this, the math is undeniably powerful — and understanding it is the most important financial concept any Indian investor can grasp.',
+    sections: [
+      {
+        heading: 'Simple vs Compound Interest: The Key Difference',
+        content: [
+          'Simple Interest: You earn interest only on your original principal. ₹1 lakh at 10% for 10 years = ₹10,000/year = ₹1 lakh total interest → ₹2 lakh at end.',
+          'Compound Interest: You earn interest on your principal AND on the interest already earned. ₹1 lakh at 10% compounded annually for 10 years → ₹2.59 lakh at end.',
+          'The difference: ₹59,000 extra — on the same principal and same rate — just by letting interest compound instead of paying it out.',
+        ],
+      },
+      {
+        heading: 'The Power of Starting Early: 10 Years Makes a Crore Difference',
+        content: [
+          'Investor A starts at age 25, invests ₹5,000/month via SIP for 35 years at 12% → Corpus at 60: ₹3.24 crore',
+          'Investor B starts at age 35, invests ₹5,000/month via SIP for 25 years at 12% → Corpus at 60: ₹94 lakh',
+          'Investor A invested just ₹6 lakh more (₹5,000 × 120 months extra) but ends up with ₹2.30 crore more.',
+          'That one decade of delay costs ₹2.30 crore. Compound interest rewards patience and punishes procrastination.',
+        ],
+      },
+      {
+        heading: 'The Rule of 72: How Fast Will Your Money Double?',
+        content: [
+          'Divide 72 by your annual return rate to estimate how many years it takes to double your money.',
+          'FD at 7%: 72 ÷ 7 = ~10.3 years to double',
+          'Equity at 12%: 72 ÷ 12 = 6 years to double',
+          'Equity at 15%: 72 ÷ 15 = 4.8 years to double',
+          'At 12%, ₹1 lakh doubles to ₹2 lakh in 6 years, ₹4 lakh in 12 years, ₹8 lakh in 18 years, ₹16 lakh in 24 years, ₹32 lakh in 30 years. The acceleration in the later years is the compound effect at work.',
+        ],
+      },
+      {
+        heading: 'Compounding Frequency: Monthly Beats Yearly',
+        content: [
+          'The frequency of compounding also matters. ₹1 lakh at 10% p.a.:',
+          'Compounded annually: ₹1,10,000 after 1 year',
+          'Compounded quarterly: ₹1,10,381 after 1 year',
+          'Compounded monthly: ₹1,10,471 after 1 year',
+          'Compounded daily: ₹1,10,516 after 1 year',
+          'The difference seems small in one year but compounds significantly over 20-30 years. This is why FDs that compound monthly or quarterly give slightly better returns than those that compound annually.',
+        ],
+      },
+      {
+        heading: 'The Flip Side: Compound Interest Works Against You in Loans',
+        content: [
+          'The same force that builds wealth also works against you when you borrow. A ₹10 lakh personal loan at 18% for 5 years means you pay back ₹15.24 lakh — ₹5.24 lakh in interest.',
+          'Credit card debt at 36-42% annual interest is catastrophic. ₹1 lakh unpaid on a credit card for 2 years at 36% = ₹1.96 lakh owed.',
+          'The rule: earn compound interest (via investments), avoid paying compound interest (pay loans aggressively, clear credit cards every month).',
+        ],
+      },
+    ],
+    conclusion:
+      'The math of compounding is simple but its impact is profound. Start early, stay consistent, reinvest your returns, and let time do the heavy lifting. Use the FinCalc India Compound Interest Calculator to model your own scenarios — enter any principal, rate, and tenure to see the exact growth with your numbers.',
+  },
+];
+
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find(a => a.slug === slug);
 }

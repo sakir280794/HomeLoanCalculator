@@ -1,127 +1,119 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
-import { ChevronRight, Calculator, TrendingUp, ArrowUpCircle, Building2, BarChart3, CheckCircle } from 'lucide-react';
+import { ChevronRight, Calculator, TrendingUp, PiggyBank, Receipt, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'How to Use the Home Loan Calculator',
-  description: 'Step-by-step guide to using the Home Loan Calculator — EMI, prepayment, EMI booster, top-up loan, and amortization table explained.',
+  title: 'How to Use FinCalc India — Guide for All Calculators',
+  description: 'Step-by-step guide for all FinCalc India calculators — loan EMI, prepayment, FD, SIP, PPF, GST, gratuity, compound interest and more.',
 };
 
-const steps = [
+const sections = [
   {
     icon: Calculator,
     color: 'indigo',
-    title: 'Step 1: Enter Loan Details',
-    id: 'loan-details',
+    title: 'Loan Calculators',
+    id: 'loans',
+    subtitle: 'Home Loan, Personal Loan, Car Loan, Bike Loan, Education Loan, Business Loan, EMI Calculator',
     content: [
       {
-        subtitle: 'Property Value & Down Payment',
-        text: 'Enter your property value and down payment. You can enter the down payment as an amount (₹) or as a percentage (%). The loan amount is calculated automatically.',
+        subtitle: 'Enter Your Loan Details',
+        text: 'Fill in the Loan Amount (₹), Annual Interest Rate (% p.a.), and Tenure (years). The calculator instantly shows your monthly EMI, total interest payable, and total repayment amount.',
       },
       {
-        subtitle: 'Loan Amount',
-        text: 'If you already know your loan amount, you can enter it directly by clicking "Enter Loan Amount Directly" — this overrides the property value / down payment calculation.',
+        subtitle: 'Read the Results',
+        text: 'After clicking Calculate you get: Monthly EMI, Total Interest, Total Payment, and an amortization table showing month-by-month principal/interest/balance breakdown. Navigate pages with the arrows below the table.',
       },
       {
-        subtitle: 'Interest Rate',
-        text: 'Enter your annual interest rate (e.g. 8.5 for 8.5% p.a.). Check your loan sanction letter or call your bank to confirm the current rate.',
+        subtitle: 'Home Loan — Prepayment Planner',
+        text: 'The Home Loan calculator has an advanced Prepayment section. Toggle it on and choose "Reduce Tenure" (pay off early, same EMI) or "Reduce EMI" (lower monthly payment). Add monthly extra, one-time lump sum, yearly payments, or multiple custom payments on specific dates.',
       },
       {
-        subtitle: 'Tenure',
-        text: 'Enter the loan tenure in years and months. Most home loans range from 10 to 30 years. Longer tenure = lower EMI but much higher total interest.',
+        subtitle: 'Home Loan — EMI Booster',
+        text: 'EMI Booster lets you commit to a higher EMI from a future date (e.g. after a salary hike). Set the boosted amount and start month — the calculator shows exactly how many months and rupees you save.',
       },
       {
-        subtitle: 'Loan Start Date',
-        text: 'Select the month and year your loan disbursement starts. This is used to generate accurate amortization dates.',
+        subtitle: 'Home Loan — Top-Up Loan',
+        text: 'Planning a home renovation loan on top of your existing home loan? Enable Top-Up, enter its amount, rate, and tenure. The calculator shows the combined monthly outflow and a separate amortization table for the top-up.',
+      },
+      {
+        subtitle: 'Typical Interest Rates (India, 2026)',
+        text: 'Home Loan: 8–9.5% · Personal Loan: 10–18% · Car Loan: 8–11% · Bike Loan: 9–13% · Education Loan: 9–12% · Business Loan: 12–18%. Always confirm your exact rate with your lender.',
       },
     ],
   },
   {
     icon: TrendingUp,
     color: 'emerald',
-    title: 'Step 2: Plan Prepayments',
-    id: 'prepayment',
+    title: 'Investment Calculators',
+    id: 'investments',
+    subtitle: 'SIP, FD, PPF, Lumpsum Investment',
     content: [
       {
-        subtitle: 'Enable Prepayment',
-        text: 'Toggle on Prepayment to see how extra payments reduce your loan. You can choose to "Reduce Tenure" (pay off early, same EMI) or "Reduce EMI" (lower monthly payment, same end date).',
+        subtitle: 'SIP Calculator — Systematic Investment Plan',
+        text: 'Enter your Monthly SIP Amount (₹), Expected Annual Return (%), and Investment Period (years). The calculator shows Total Corpus (future value), Total Invested, and Total Gains using the SIP future value formula: M × ((1+r)^n − 1)/r × (1+r).',
       },
       {
-        subtitle: 'Monthly Extra',
-        text: 'A fixed extra amount you pay every month on top of your EMI. For example, ₹5,000/month from a specific start date.',
+        subtitle: 'FD Calculator — Fixed Deposit',
+        text: 'Enter Principal, Annual Interest Rate, FD Tenure, and choose Compounding Frequency (Monthly, Quarterly, Half-Yearly, Yearly). Most Indian banks compound quarterly. The result shows Maturity Amount, Interest Earned, and Effective Annual Rate.',
       },
       {
-        subtitle: 'One-Time Payment',
-        text: 'A single lump sum payment made once at the start date you choose.',
+        subtitle: 'PPF Calculator — Public Provident Fund',
+        text: 'Enter your Yearly Deposit (max ₹1,50,000), interest rate (currently 7.1% p.a.), and tenure (minimum 15 years). PPF compounds annually and interest is fully tax-free under Section 80C. The calculator simulates the year-by-year accumulation.',
       },
       {
-        subtitle: 'Yearly Payment',
-        text: 'An amount you pay once every year (e.g. using your annual bonus). Applied on the same month each year.',
+        subtitle: 'Lumpsum Calculator',
+        text: 'For a one-time mutual fund or equity investment. Enter the Investment Amount, Expected Annual Return, and Period. Uses the compound interest formula A = P × (1+r)^t. Compare this with SIP to decide which works better for your financial situation.',
       },
       {
-        subtitle: 'Add Lump Sum Payments',
-        text: 'Click "+ Add Payment" to add specific payments on specific dates — for example ₹2 lakh in March 2027 and ₹3 lakh in December 2028. This is the most flexible option for real-world planning.',
+        subtitle: 'Important Disclaimer',
+        text: 'SIP and Lumpsum returns are estimates based on a fixed assumed rate. Mutual fund returns are market-linked and not guaranteed. FD and PPF returns are more predictable but still subject to rate revisions by your bank/government.',
       },
     ],
   },
   {
-    icon: ArrowUpCircle,
+    icon: PiggyBank,
     color: 'amber',
-    title: 'Step 3: Use EMI Booster',
-    id: 'emi-booster',
+    title: 'Interest Calculators',
+    id: 'interest',
+    subtitle: 'Compound Interest, Simple Interest',
     content: [
       {
-        subtitle: 'What is EMI Booster?',
-        text: 'EMI Booster lets you voluntarily increase your monthly EMI from a specific date — for example, after a salary hike. Instead of the calculated ₹43,391, you commit to ₹50,000/month.',
+        subtitle: 'Simple Interest',
+        text: 'Formula: SI = P × R × T. Enter Principal (P), Rate per annum (R%), and Time in years (T). Used for short-term loans, friendly lending, and basic financial math. The result shows interest earned and total amount (A = P + SI).',
       },
       {
-        subtitle: 'Setting the Boost',
-        text: 'Use the slider or input field to set your boosted EMI amount. Set the "Boost Start" month and year to match when you want it to begin.',
+        subtitle: 'Compound Interest',
+        text: 'Formula: A = P × (1 + r/n)^(nt). Choose Compounding Frequency — Annual, Half-Yearly, Quarterly, Monthly, or Daily. More frequent compounding = slightly higher returns. The calculator shows the effective formula with your actual numbers substituted in.',
       },
       {
-        subtitle: 'Viewing the Impact',
-        text: 'After clicking Calculate, the "EMI Booster" tab in the amortization table shows your schedule with the boosted EMI. If you also have prepayments active, the "Combined" tab shows the combined effect.',
+        subtitle: 'When to Use Which',
+        text: 'Simple Interest: quick estimates, cheque discounting, peer lending. Compound Interest: savings accounts, FDs, investment growth modelling. Most real-world financial products use compound interest — understanding both helps you evaluate deals accurately.',
       },
     ],
   },
   {
-    icon: Building2,
-    color: 'purple',
-    title: 'Step 4: Top-Up Loan',
-    id: 'topup',
-    content: [
-      {
-        subtitle: 'What is a Top-Up Loan?',
-        text: 'A top-up loan is an additional loan taken on top of your existing home loan — typically for renovation, repairs, or other needs. It usually has a slightly higher interest rate.',
-      },
-      {
-        subtitle: 'How to Use It',
-        text: 'Enable the Top-Up section, enter the top-up amount, interest rate, and tenure. You can also set a start date if the top-up begins later than your main loan.',
-      },
-      {
-        subtitle: 'What You See',
-        text: 'The calculator shows your top-up EMI, total interest on the top-up, combined monthly outflow (main EMI + top-up EMI), and a separate amortization table for the top-up.',
-      },
-    ],
-  },
-  {
-    icon: BarChart3,
+    icon: Receipt,
     color: 'rose',
-    title: 'Step 5: Read the Results',
-    id: 'results',
+    title: 'Tax & Utility Calculators',
+    id: 'tax',
+    subtitle: 'GST Calculator, Gratuity Calculator',
     content: [
       {
-        subtitle: 'Summary Cards',
-        text: 'After clicking Calculate, you see key metrics: Monthly EMI, Total Interest, Total Payment, Loan End Date, and (if prepayment is active) how many months and rupees you save.',
+        subtitle: 'GST Calculator — Exclusive vs Inclusive',
+        text: 'Choose whether your amount is Exclusive (before GST) or Inclusive (GST already included). Select GST rate using the quick buttons (3%, 5%, 12%, 18%, 28%) or enter a custom rate. The result shows Pre-GST Amount, Total GST, CGST (Central), SGST (State), and Final Amount.',
       },
       {
-        subtitle: 'Amortization Table Tabs',
-        text: 'The table has up to 5 tabs: Base (your standard schedule), Prepayment, EMI Booster, Combined (booster + prepayment), and Top-Up. Each tab shows month-by-month breakdown of EMI, principal, interest, and balance.',
+        subtitle: 'GST Rate Reference',
+        text: '5%: essential food, transport, economy hotels · 12%: processed food, mobile phones · 18%: most services, electronics, restaurants · 28%: luxury goods, cars, tobacco, aerated drinks.',
       },
       {
-        subtitle: 'Charts',
-        text: 'The charts show your principal vs interest breakdown over time, and how your outstanding balance reduces each year.',
+        subtitle: 'Gratuity Calculator',
+        text: 'As per the Payment of Gratuity Act, 1972. Enter Last Drawn Monthly Basic + DA, Years of Service (minimum 5 years to be eligible), and select whether your organisation is Covered (10+ employees) or Not Covered. Formula: (15/26) × Last Salary × Years for covered establishments.',
+      },
+      {
+        subtitle: 'Gratuity Tax Rules',
+        text: 'Gratuity up to ₹20 lakh is fully exempt from income tax for employees covered under the Gratuity Act. The calculator shows the taxable amount if your gratuity exceeds this limit. Always verify with a tax advisor for your specific situation.',
       },
     ],
   },
@@ -131,7 +123,6 @@ const colorMap: Record<string, string> = {
   indigo: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400',
   emerald: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400',
   amber: 'bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400',
-  purple: 'bg-purple-100 dark:bg-purple-900/40 text-purple-600 dark:text-purple-400',
   rose: 'bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400',
 };
 
@@ -149,17 +140,17 @@ export default function GuidePage() {
         </nav>
 
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
-          How to Use the Home Loan Calculator
+          How to Use FinCalc India
         </h1>
         <p className="text-gray-500 dark:text-gray-400 text-base mb-10 max-w-2xl">
-          A complete walkthrough of every feature — from entering loan details to reading your amortization schedule and modelling prepayment strategies.
+          A complete guide to every calculator — loans, investments, interest, tax and more. Find your calculator type below and follow the steps.
         </p>
 
         {/* Quick jump */}
         <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-5 mb-10">
-          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Jump to</p>
+          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Jump to section</p>
           <div className="flex flex-wrap gap-2">
-            {steps.map(s => (
+            {sections.map(s => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
@@ -171,25 +162,28 @@ export default function GuidePage() {
           </div>
         </div>
 
-        {/* Steps */}
+        {/* Sections */}
         <div className="space-y-10">
-          {steps.map((step) => {
-            const Icon = step.icon;
-            const iconCls = colorMap[step.color];
+          {sections.map((section) => {
+            const Icon = section.icon;
+            const iconCls = colorMap[section.color];
             return (
               <section
-                key={step.id}
-                id={step.id}
+                key={section.id}
+                id={section.id}
                 className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6 scroll-mt-20"
               >
-                <div className="flex items-center gap-3 mb-5">
-                  <div className={`p-2.5 rounded-xl ${iconCls}`}>
+                <div className="flex items-start gap-3 mb-2">
+                  <div className={`p-2.5 rounded-xl shrink-0 ${iconCls}`}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">{step.title}</h2>
+                  <div>
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">{section.title}</h2>
+                    <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5">{section.subtitle}</p>
+                  </div>
                 </div>
-                <div className="space-y-5">
-                  {step.content.map((item, i) => (
+                <div className="mt-5 space-y-5">
+                  {section.content.map((item, i) => (
                     <div key={i} className="flex gap-3">
                       <CheckCircle className="w-4 h-4 text-indigo-400 mt-1 shrink-0" />
                       <div>
@@ -207,13 +201,13 @@ export default function GuidePage() {
         {/* CTA */}
         <div className="mt-12 bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-center">
           <h3 className="text-xl font-bold text-white mb-2">Ready to Calculate?</h3>
-          <p className="text-indigo-200 text-sm mb-5">Use the calculator to model your exact loan scenario.</p>
+          <p className="text-indigo-200 text-sm mb-5">Pick any calculator from our full library.</p>
           <Link
             href="/"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-indigo-600 font-semibold rounded-xl hover:bg-indigo-50 transition-colors"
           >
             <Calculator className="w-4 h-4" />
-            Open Calculator
+            View All Calculators
           </Link>
         </div>
       </main>

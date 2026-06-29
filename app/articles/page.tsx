@@ -5,14 +5,16 @@ import { articles } from '@/lib/articles';
 import { ChevronRight, Clock, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Home Loan Articles & Guides',
-  description: 'Expert articles on home loan prepayment, EMI strategies, interest saving tips, and smart borrowing — written for Indian home loan borrowers.',
+  title: 'Financial Articles & Guides — FinCalc India',
+  description: 'Expert articles on loans, SIP, FD, compound interest, GST and smart personal finance — written for Indian investors and borrowers.',
 };
 
 const categoryBg: Record<string, string> = {
   Strategy: 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300',
   Prepayment: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300',
   Tips: 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300',
+  Investment: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300',
+  Basics: 'bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300',
 };
 
 export default function ArticlesPage() {
@@ -29,10 +31,10 @@ export default function ArticlesPage() {
         </nav>
 
         <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-3">
-          Home Loan Articles & Guides
+          Financial Articles & Guides
         </h1>
         <p className="text-gray-500 dark:text-gray-400 text-base mb-10 max-w-2xl">
-          Practical guides on prepayment strategies, EMI optimisation, and smart home loan planning — backed by real numbers.
+          Practical guides on loans, investments, tax savings, and smart personal finance — backed by real numbers and India-specific context.
         </p>
 
         <div className="space-y-5">
@@ -45,7 +47,7 @@ export default function ArticlesPage() {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${categoryBg[article.category] ?? categoryBg.Tips}`}>
+                    <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${categoryBg[article.category] ?? 'bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-400'}`}>
                       {article.category}
                     </span>
                     <span className="flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500">

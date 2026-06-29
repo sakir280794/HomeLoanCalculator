@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import SiteHeader from '@/components/SiteHeader';
 import { categories } from '@/lib/calculators';
+import { Star, ArrowRight, Calculator, TrendingDown, Zap, Building2 } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'FinCalc India — Free Financial Calculators',
@@ -63,10 +64,57 @@ export default function HubPage() {
         </div>
       </div>
 
+      {/* ── Featured: Home Loan Calculator ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-2">
+        <div className="flex items-center gap-2 mb-4">
+          <Star className="w-4 h-4 text-amber-500 fill-amber-400" />
+          <span className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-widest">Flagship Calculator</span>
+        </div>
+        <Link
+          href="/home-loan"
+          className="group block bg-gradient-to-br from-indigo-600 via-indigo-700 to-blue-700 rounded-2xl p-7 sm:p-10 hover:shadow-2xl hover:scale-[1.01] transition-all duration-200"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-4xl">🏠</span>
+                <div>
+                  <p className="text-white/70 text-xs font-semibold uppercase tracking-widest">Most Comprehensive</p>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight">Home Loan Calculator</h2>
+                </div>
+              </div>
+              <p className="text-indigo-200 text-sm sm:text-base mb-6 max-w-xl">
+                India&apos;s most complete home loan planning tool — calculate EMI, model prepayments, boost your EMI, add a top-up loan, and see the full amortization schedule month by month.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                {[
+                  { icon: Calculator, label: 'EMI Calculator' },
+                  { icon: TrendingDown, label: 'Prepayment Planner' },
+                  { icon: Zap, label: 'EMI Booster' },
+                  { icon: Building2, label: 'Top-Up Loan' },
+                ].map(f => (
+                  <div key={f.label} className="flex items-center gap-2 bg-white/10 rounded-xl px-3 py-2">
+                    <f.icon className="w-4 h-4 text-indigo-200 shrink-0" />
+                    <span className="text-xs font-semibold text-white">{f.label}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="inline-flex items-center gap-2 bg-white text-indigo-700 font-bold text-sm px-5 py-2.5 rounded-xl group-hover:bg-indigo-50 transition-colors">
+                Open Calculator <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+            <div className="hidden sm:flex flex-col gap-2 text-right shrink-0">
+              {['EMI', 'Total Interest', 'Prepayment Savings', 'Amortization Table'].map(tag => (
+                <span key={tag} className="text-xs font-medium text-indigo-200 bg-white/10 px-3 py-1 rounded-full">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </Link>
+      </div>
+
       {/* Categories */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
         {categories.map(cat => {
-          const c = colorMap[cat.color] ?? colorMap.indigo;
           return (
             <section key={cat.title}>
               {/* Section header */}

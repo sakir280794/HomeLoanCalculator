@@ -25,6 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/articles/emi-booster-vs-prepayment', priority: 0.7, freq: 'yearly' },
     { url: '/articles/how-part-payments-slash-home-loan-tenure', priority: 0.7, freq: 'yearly' },
     { url: '/articles/5-ways-to-reduce-home-loan-interest', priority: 0.7, freq: 'yearly' },
+    { url: '/articles/sip-vs-fd-which-is-better', priority: 0.7, freq: 'yearly' },
+    { url: '/articles/understanding-compound-interest-the-eighth-wonder', priority: 0.7, freq: 'yearly' },
     { url: '/tips', priority: 0.65, freq: 'yearly' },
   ] as const;
 

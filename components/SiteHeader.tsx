@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Moon, Sun, Calculator } from 'lucide-react';
+import { LayoutGrid, Moon, Sun } from 'lucide-react';
 
 const navLinks = [
-  { href: '/', label: 'Calculator' },
+  { href: '/', label: 'All Calculators' },
   { href: '/guide', label: 'How to Use' },
   { href: '/articles', label: 'Articles' },
-  { href: '/tips', label: 'Loan Tips' },
+  { href: '/tips', label: 'Finance Tips' },
 ];
 
 export default function SiteHeader() {
@@ -37,11 +37,11 @@ export default function SiteHeader() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <div className="bg-white/20 p-2 rounded-xl">
-            <Home className="w-5 h-5 text-white" />
+            <LayoutGrid className="w-5 h-5 text-white" />
           </div>
           <div className="hidden sm:block">
-            <p className="text-base font-bold text-white leading-none">Home Loan Calculator</p>
-            <p className="text-indigo-200 text-xs mt-0.5">Plan your dream home financing</p>
+            <p className="text-base font-bold text-white leading-none">FinCalc India</p>
+            <p className="text-indigo-200 text-xs mt-0.5">Free Financial Calculators</p>
           </div>
         </Link>
 
