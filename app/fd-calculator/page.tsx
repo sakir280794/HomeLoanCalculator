@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
-import { Calculator } from 'lucide-react';
+import SiteFooter from '@/components/SiteFooter';
+import Breadcrumb from '@/components/Breadcrumb';
+import { Calculator, Copy, Check } from 'lucide-react';
 
 function fmt(n: number) {
   return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n);
@@ -15,8 +17,9 @@ export default function FDCalculatorPage() {
   const [principal, setPrincipal] = useState('100000');
   const [rate, setRate] = useState('7');
   const [years, setYears] = useState('3');
-  const [freq, setFreq] = useState('4'); // quarterly
+  const [freq, setFreq] = useState('4');
   const [result, setResult] = useState<{ maturity: number; interest: number; effectiveRate: number } | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const calculate = () => {
     const p = parseFloat(principal);
@@ -30,10 +33,22 @@ export default function FDCalculatorPage() {
     setResult({ maturity, interest, effectiveRate });
   };
 
+  const handleCopy = () => {
+    if (!result) return;
+    const freqLabel = { '12': 'Monthly', '4': 'Quarterly', '2': 'Half-Yearly', '1': 'Yearly' }[freq] ?? 'Quarterly';
+    const text = `FD Calculator Result\nPrincipal: ${fmt(parseFloat(principal))}\nRate: ${rate}% p.a. (${freqLabel} compounding)\nTenure: ${years} years\nInterest Earned: ${fmt(result.interest)}\nMaturity Amount: ${fmt(result.maturity)}`;
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <SiteHeader />
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Breadcrumb crumbs={[{ label: 'Home', href: '/' }, { label: 'FD Calculator' }]} />
+
         <div className="flex items-center gap-3 mb-6">
           <span className="text-3xl">🏛️</span>
           <div>
@@ -41,21 +56,22 @@ export default function FDCalculatorPage() {
             <p className="text-sm text-gray-500 dark:text-gray-400">Calculate maturity amount with compound interest for any FD</p>
           </div>
         </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-6 items-start">
           <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6 space-y-5 lg:sticky lg:top-24">
             <div>
               <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Principal Amount</label>
               <div className="relative"><span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-semibold text-sm">₹</span>
-                <input type="number" value={principal} onChange={e => setPrincipal(e.target.value)} className={`${inputCls} pl-8`} placeholder="100000" /></div>
+                <input type="number" value={principal} onChange={e => setPrincipal(e.target.value)} className={`${inputCls} pl-8`} placeholder="100000" min="0" /></div>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Annual Interest Rate</label>
-              <div className="relative"><input type="number" value={rate} onChange={e => setRate(e.target.value)} className={`${inputCls} pr-12`} placeholder="7" step="0.1" />
+              <div className="relative"><input type="number" value={rate} onChange={e => setRate(e.target.value)} className={`${inputCls} pr-12`} placeholder="7" step="0.1" min="0" max="20" />
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium">% p.a.</span></div>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">FD Tenure (Years)</label>
-              <div className="relative"><input type="number" value={years} onChange={e => setYears(e.target.value)} className={`${inputCls} pr-12`} placeholder="3" step="0.5" min="0.5" />
+              <div className="relative"><input type="number" value={years} onChange={e => setYears(e.target.value)} className={`${inputCls} pr-12`} placeholder="3" step="0.5" min="0.5" max="10" />
                 <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium">Yrs</span></div>
             </div>
             <div>
@@ -71,6 +87,7 @@ export default function FDCalculatorPage() {
               <Calculator className="w-5 h-5" />Calculate Maturity
             </button>
           </div>
+
           <div className="space-y-5">
             {result ? (
               <>
@@ -86,6 +103,14 @@ export default function FDCalculatorPage() {
                     </div>
                   ))}
                 </div>
+
+                <div className="flex justify-end">
+                  <button onClick={handleCopy} className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copied ? 'Copied!' : 'Copy Result'}
+                  </button>
+                </div>
+
                 <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-5 space-y-3">
                   <h3 className="text-sm font-bold text-gray-800 dark:text-gray-200">Summary</h3>
                   {[
@@ -110,8 +135,75 @@ export default function FDCalculatorPage() {
             )}
           </div>
         </div>
-        <div className="mt-8"><Link href="/" className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">← All Calculators</Link></div>
+
+        {/* Formula section */}
+        <div className="mt-12 space-y-6">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">FD Compound Interest Formula</h2>
+            <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-4 mb-4 font-mono text-sm text-indigo-800 dark:text-indigo-300">
+              A = P × (1 + r/n)^(n×t)
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3 text-sm text-gray-600 dark:text-gray-400">
+              {[
+                ['A', 'Maturity amount (principal + interest)'],
+                ['P', 'Principal amount deposited'],
+                ['r', 'Annual interest rate (as decimal, e.g. 7% = 0.07)'],
+                ['n', 'Compounding frequency per year (quarterly = 4)'],
+                ['t', 'Tenure in years'],
+              ].map(([sym, desc]) => (
+                <div key={sym} className="flex gap-3">
+                  <span className="font-bold text-indigo-600 dark:text-indigo-400 w-6 shrink-0">{sym}</span>
+                  <span>{desc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">Worked Example</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">₹1,00,000 FD at 7% p.a., quarterly compounding, 3 years:</p>
+            <div className="space-y-2 text-sm">
+              {[
+                ['P (Principal)', '₹1,00,000'],
+                ['r (Annual rate)', '7% = 0.07'],
+                ['n (Quarterly)', '4'],
+                ['t (Tenure)', '3 years'],
+                ['Maturity (A)', '₹1,00,000 × (1 + 0.07/4)^(4×3) = ₹1,23,144'],
+                ['Interest Earned', '₹23,144'],
+                ['Effective Annual Rate', '7.19% (slightly > 7% due to quarterly compounding)'],
+              ].map(([label, val]) => (
+                <div key={label} className="flex justify-between py-1.5 border-b border-gray-50 dark:border-slate-700">
+                  <span className="text-gray-500 dark:text-gray-400">{label}</span>
+                  <span className="font-semibold text-gray-800 dark:text-gray-200">{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 p-6">
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-4">FD Tips for Indian Investors</h2>
+            <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+              {[
+                'TDS at 10% applies when FD interest exceeds ₹40,000 per year (₹50,000 for senior citizens). Submit Form 15G/15H to avoid TDS if your total income is below the taxable limit.',
+                'Senior citizen FDs typically offer 0.25–0.75% higher interest rates than regular FDs.',
+                'Tax-saving FDs (5-year lock-in) qualify for ₹1.5 lakh deduction under Section 80C, but interest is fully taxable.',
+                'DICGC insures each depositor up to ₹5 lakh (principal + interest) per bank. Spread large deposits across banks.',
+                'Quarterly compounding is standard in India. Monthly compounding gives marginally higher returns.',
+              ].map((tip, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="text-indigo-500 font-bold shrink-0">{i + 1}.</span>
+                  <span>{tip}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-8">
+          <Link href="/" className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">← All Calculators</Link>
+        </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }

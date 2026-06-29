@@ -36,6 +36,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/child-education', priority: 0.8, freq: 'monthly' },
     { url: '/retirement', priority: 0.85, freq: 'monthly' },
     { url: '/tips', priority: 0.65, freq: 'yearly' },
+    { url: '/about', priority: 0.6, freq: 'yearly' },
+    { url: '/privacy', priority: 0.4, freq: 'yearly' },
+    { url: '/disclaimer', priority: 0.4, freq: 'yearly' },
   ] as const;
 
   return routes.map(r => ({

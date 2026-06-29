@@ -1,21 +1,47 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import SearchableGrid from '@/components/SearchableGrid';
 import { categories } from '@/lib/calculators';
 import { Star, ArrowRight, Calculator, TrendingDown, Zap, Building2 } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
+
+const siteUrl = 'https://financecalcindia.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'FinCalc India — Free Financial Calculators',
-  description: 'All-in-one financial calculator platform. Home loan, personal loan, FD, SIP, PPF, GST, compound interest and 60+ calculators — free, accurate, and India-focused.',
+  title: 'FinCalc India — Free Financial Calculators for Loans, Investments & Tax',
+  description: '24+ free financial calculators for India — home loan EMI, SIP, FD, income tax (FY 2025-26), HRA, GST, retirement, NPS and more. No signup. RBI-verified formulas.',
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'FinCalc India — Free Financial Calculators',
+    description: '24+ free calculators for loans, investments, tax & retirement. India-focused, no signup, instant results.',
+    url: siteUrl,
+    siteName: 'FinCalc India',
+    locale: 'en_IN',
+    type: 'website',
+  },
 };
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'FinCalc India',
+  url: siteUrl,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl}/?q={search_term_string}` },
+    'query-input': 'required name=search_term_string',
+  },
+};
 
 export default function HubPage() {
   const liveCount = categories.flatMap(c => c.items).filter(i => i.status === 'live').length;
-  const totalCount = categories.flatMap(c => c.items).length;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
+      <JsonLd data={websiteSchema} />
       <SiteHeader />
 
       {/* Hero */}
@@ -28,31 +54,33 @@ export default function HubPage() {
             FinCalc India
           </h1>
           <p className="text-indigo-200 text-lg mb-6 max-w-2xl mx-auto">
-            {liveCount} live calculators · {totalCount}+ coming — loans, investments, tax, retirement &amp; more
+            {liveCount} free calculators — loans, investments, income tax, retirement &amp; more
           </p>
-          {/* Trust signals */}
+
+          {/* Trust pills */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {[
               { icon: '✅', label: `${liveCount} Free Calculators` },
               { icon: '⚡', label: 'Instant Results' },
               { icon: '🔒', label: 'No Signup' },
-              { icon: '📱', label: 'Mobile Friendly' },
-              { icon: '🇮🇳', label: 'India-Focused' },
+              { icon: '📐', label: 'RBI-Verified Formulas' },
+              { icon: '🇮🇳', label: 'FY 2025-26 Updated' },
             ].map(t => (
               <span key={t.label} className="inline-flex items-center gap-1.5 bg-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
                 {t.icon} {t.label}
               </span>
             ))}
           </div>
-          {/* Featured quick links */}
+
+          {/* Quick links */}
           <div className="flex flex-wrap justify-center gap-2">
             {[
               { label: '🏠 Home Loan', href: '/home-loan' },
               { label: '👤 Personal Loan', href: '/personal-loan' },
               { label: '🏛️ FD Calculator', href: '/fd-calculator' },
               { label: '📊 SIP Calculator', href: '/sip-calculator' },
+              { label: '🧮 Income Tax', href: '/income-tax' },
               { label: '📋 GST Calculator', href: '/gst-calculator' },
-              { label: '📐 Compound Interest', href: '/compound-interest' },
             ].map(q => (
               <Link
                 key={q.href}
@@ -66,7 +94,7 @@ export default function HubPage() {
         </div>
       </div>
 
-      {/* ── Featured: Home Loan Calculator ── */}
+      {/* Flagship: Home Loan Calculator */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-2">
         <div className="flex items-center gap-2 mb-4">
           <Star className="w-4 h-4 text-amber-500 fill-amber-400" />
@@ -114,76 +142,12 @@ export default function HubPage() {
         </Link>
       </div>
 
-      {/* Categories */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
-        {categories.map(cat => {
-          return (
-            <section key={cat.title}>
-              {/* Section header */}
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-2xl">{cat.emoji}</span>
-                <div>
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">{cat.title}</h2>
-                  <p className="text-xs text-gray-400 dark:text-gray-500">
-                    {cat.items.filter(i => i.status === 'live').length} live · {cat.items.filter(i => i.status === 'soon').length} coming soon
-                  </p>
-                </div>
-              </div>
+      {/* Searchable calculator grid */}
+      <div className="pt-10">
+        <SearchableGrid categories={categories} />
+      </div>
 
-              {/* Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-                {cat.items.map(item => (
-                  item.status === 'live' ? (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`group relative flex flex-col gap-2 p-4 rounded-xl border bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-600 hover:shadow-md transition-all`}
-                    >
-                      <div className="flex items-start justify-between gap-2">
-                        <span className="text-xl">{item.emoji}</span>
-                        <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300">
-                          Live
-                        </span>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-snug">
-                          {item.name}
-                        </p>
-                        <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 leading-relaxed">{item.desc}</p>
-                      </div>
-                    </Link>
-                  ) : (
-                    <div
-                      key={item.name}
-                      className="relative flex flex-col gap-2 p-4 rounded-xl border bg-gray-50 dark:bg-slate-800/50 border-gray-100 dark:border-slate-700/50 opacity-70"
-                    >
-                      <div className="flex items-start justify-between gap-2">
-                        <span className="text-xl grayscale">{item.emoji}</span>
-                        <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-gray-200 dark:bg-slate-700 text-gray-500 dark:text-gray-400">
-                          Soon
-                        </span>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-gray-500 dark:text-gray-400 leading-snug">{item.name}</p>
-                        <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
-                  )
-                ))}
-              </div>
-            </section>
-          );
-        })}
-      </main>
-
-      <footer className="mt-8 py-8 border-t border-gray-200 dark:border-slate-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-2">
-          <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-            Built by <span className="text-indigo-600 dark:text-indigo-400 font-semibold">Sakirhusain Syed</span>
-          </p>
-          <p className="text-xs text-gray-400 dark:text-gray-500">Results are indicative. Always verify with your financial institution.</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

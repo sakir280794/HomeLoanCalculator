@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import { Calculator, ChevronLeft, ChevronRight, Download } from 'lucide-react';
+import { Calculator, ChevronLeft, ChevronRight, Download, Copy, Check } from 'lucide-react';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
+import Breadcrumb from '@/components/Breadcrumb';
+import SiteFooter from '@/components/SiteFooter';
 import { calculateEMI } from '@/lib/calculations';
 
 interface Row { month: number; emi: number; principal: number; interest: number; balance: number; }
@@ -49,6 +51,7 @@ export default function SimpleLoanCalculator({ config }: { config: SimpleLoanCon
   const [result, setResult] = useState<{ emi: number; totalInterest: number; totalPayment: number; schedule: Row[] } | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [page, setPage] = useState(1);
+  const [copied, setCopied] = useState(false);
 
   const handleCalculate = useCallback(() => {
     const errs: Record<string, string> = {};
@@ -76,6 +79,8 @@ export default function SimpleLoanCalculator({ config }: { config: SimpleLoanCon
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <SiteHeader />
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Breadcrumb crumbs={[{ label: 'Home', href: '/' }, { label: config.title }]} />
+
         {/* Page title */}
         <div className="flex items-center gap-3 mb-6">
           <span className="text-3xl">{config.emoji}</span>
@@ -146,6 +151,22 @@ export default function SimpleLoanCalculator({ config }: { config: SimpleLoanCon
                       <p className={`text-xl font-bold ${c.color === 'indigo' ? 'text-indigo-600 dark:text-indigo-400' : c.color === 'rose' ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'}`}>{c.value}</p>
                     </div>
                   ))}
+                </div>
+                {/* Copy result button */}
+                <div className="flex justify-end">
+                  <button
+                    onClick={() => {
+                      const text = `${config.title}\nMonthly EMI: ${fmt(result.emi)}\nTotal Interest: ${fmt(result.totalInterest)}\nTotal Payment: ${fmt(result.totalPayment)}`;
+                      navigator.clipboard.writeText(text).then(() => {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                      });
+                    }}
+                    className="flex items-center gap-1.5 text-xs font-semibold text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copied ? 'Copied!' : 'Copy Result'}
+                  </button>
                 </div>
 
                 {/* Interest ratio bar */}
@@ -244,6 +265,7 @@ export default function SimpleLoanCalculator({ config }: { config: SimpleLoanCon
           </Link>
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }
