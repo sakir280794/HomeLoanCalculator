@@ -76,6 +76,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  verification: {
+    google: '0ULe0Y0qGOFwOHvgE_A9TSsPlkyEUhfd9Y7wdH9K2VI',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
