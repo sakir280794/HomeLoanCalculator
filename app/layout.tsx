@@ -12,9 +12,70 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const siteUrl = 'https://home-loan-calculator-ivory.vercel.app';
+
 export const metadata: Metadata = {
-  title: 'Home Loan Calculator',
-  description: 'Calculate your home loan EMI, amortization schedule, and prepayment savings.',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Home Loan Calculator – EMI, Prepayment, Top-Up & EMI Booster',
+    template: '%s | Home Loan Calculator',
+  },
+  description:
+    'Free all-in-one home loan calculator. Calculate EMI, plan prepayments (part payments), top-up loans, EMI booster, reduced EMI & reduced tenure — all in one place. Get instant amortization schedules and see how much interest you save.',
+  keywords: [
+    'home loan calculator',
+    'EMI calculator',
+    'home loan EMI calculator',
+    'prepayment calculator',
+    'part payment home loan',
+    'home loan prepayment',
+    'top up loan calculator',
+    'EMI booster',
+    'reduce EMI',
+    'reduce tenure',
+    'reduced term home loan',
+    'home loan amortization',
+    'loan calculator India',
+    'housing loan calculator',
+    'calculate home loan',
+    'home loan interest calculator',
+    'lump sum prepayment',
+    'home loan part payment calculator',
+    'mortgage calculator India',
+  ],
+  authors: [{ name: 'Sakirhusain Syed' }],
+  creator: 'Sakirhusain Syed',
+  publisher: 'Sakirhusain Syed',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_IN',
+    url: siteUrl,
+    siteName: 'Home Loan Calculator',
+    title: 'Home Loan Calculator – EMI, Prepayment, Top-Up & EMI Booster',
+    description:
+      'All-in-one home loan calculator. Plan EMI, prepayments, part payments, top-up loans, EMI booster and see your amortization schedule instantly.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Home Loan Calculator – EMI, Prepayment, Top-Up & EMI Booster',
+    description:
+      'All-in-one home loan calculator. Plan EMI, prepayments, part payments, top-up loans, EMI booster and see your amortization schedule instantly.',
+    creator: '@sakirhusainsyed',
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
