@@ -213,8 +213,6 @@ export const articles: Article[] = [
     conclusion:
       'Reducing home loan interest isn\'t about one big move — it\'s about consistently making smarter small decisions over the loan tenure. Start with any one of these five strategies, use our calculator to model the impact with your real numbers, and then layer in the other strategies as your income grows.',
   },
-];
-
   {
     slug: 'sip-vs-fd-which-is-better',
     title: 'SIP vs FD: Which is Better for Growing Your Money in India?',
