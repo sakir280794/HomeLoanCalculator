@@ -31,7 +31,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Home Loan EMI Calculator',
-  url: 'https://fincalc-india.vercel.app/home-loan',
+  url: 'https://financecalcindia.vercel.app/home-loan',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

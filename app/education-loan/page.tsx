@@ -26,7 +26,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Education Loan EMI Calculator',
-  url: 'https://fincalc-india.vercel.app/education-loan',
+  url: 'https://financecalcindia.vercel.app/education-loan',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

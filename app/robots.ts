@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://fincalc-india.vercel.app/sitemap.xml',
+    sitemap: 'https://financecalcindia.vercel.app/sitemap.xml',
   };
 }

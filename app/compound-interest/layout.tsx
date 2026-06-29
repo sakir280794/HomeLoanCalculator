@@ -25,7 +25,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Compound Interest Calculator',
-  url: 'https://fincalc-india.vercel.app/compound-interest',
+  url: 'https://financecalcindia.vercel.app/compound-interest',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

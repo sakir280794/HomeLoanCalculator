@@ -27,7 +27,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'EMI Calculator',
-  url: 'https://fincalc-india.vercel.app/emi-calculator',
+  url: 'https://financecalcindia.vercel.app/emi-calculator',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

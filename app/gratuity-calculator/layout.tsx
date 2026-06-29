@@ -26,7 +26,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Gratuity Calculator India',
-  url: 'https://fincalc-india.vercel.app/gratuity-calculator',
+  url: 'https://financecalcindia.vercel.app/gratuity-calculator',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

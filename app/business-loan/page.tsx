@@ -26,7 +26,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Business Loan EMI Calculator',
-  url: 'https://fincalc-india.vercel.app/business-loan',
+  url: 'https://financecalcindia.vercel.app/business-loan',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },

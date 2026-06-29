@@ -26,7 +26,7 @@ const calcSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Personal Loan EMI Calculator',
-  url: 'https://fincalc-india.vercel.app/personal-loan',
+  url: 'https://financecalcindia.vercel.app/personal-loan',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'All',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
