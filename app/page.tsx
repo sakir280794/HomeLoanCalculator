@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Calculator, Moon, Sun, Home } from 'lucide-react';
+import { Calculator } from 'lucide-react';
+import SiteHeader from '@/components/SiteHeader';
 import LoanDetailsForm, { type LoanFormValues } from '@/components/LoanDetailsForm';
 import PrepaymentSection, { type PrepaymentFormValues } from '@/components/PrepaymentSection';
 import TopUpSection, { type TopUpFormValues } from '@/components/TopUpSection';
@@ -53,7 +54,6 @@ const defaultTopUp: TopUpFormValues = {
 };
 
 export default function HomePage() {
-  const [darkMode, setDarkMode] = useState(false);
   const [loanForm, setLoanForm] = useState<LoanFormValues>(defaultLoan);
   const [prepForm, setPrepForm] = useState<PrepaymentFormValues>(defaultPrep);
   const [topUpForm, setTopUpForm] = useState<TopUpFormValues>(defaultTopUp);
@@ -101,22 +101,6 @@ export default function HomePage() {
     setBoostState({ emi, month, year });
   }, []);
 
-  useEffect(() => {
-    const saved = localStorage.getItem('darkMode');
-    if (saved === 'true') {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
-  const toggleDark = useCallback(() => {
-    setDarkMode(prev => {
-      const next = !prev;
-      document.documentElement.classList.toggle('dark', next);
-      localStorage.setItem('darkMode', String(next));
-      return next;
-    });
-  }, []);
 
   const handleLoanField = useCallback(
     (field: keyof LoanFormValues, value: string | number | boolean) => {
@@ -264,27 +248,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-indigo-600 via-indigo-600 to-blue-600 sticky top-0 z-30 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-white/20 p-2 rounded-xl">
-              <Home className="w-5 h-5 text-white" />
-            </div>
-            <div>
-              <h1 className="text-lg font-bold text-white leading-none">Home Loan Calculator</h1>
-              <p className="text-indigo-200 text-xs mt-0.5">Plan your dream home financing</p>
-            </div>
-          </div>
-          <button
-            onClick={toggleDark}
-            aria-label="Toggle dark mode"
-            className="p-2 rounded-xl bg-white/15 hover:bg-white/25 text-white transition-colors"
-          >
-            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Main */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
